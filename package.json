@@ -1,0 +1,59 @@
+{
+  "name": "markitdown-app",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "electron": "npm run build && electron .",
+    "dist:win": "npm run build && electron-builder --win nsis"
+  },
+  "dependencies": {
+    "jszip": "^3.10.1",
+    "mammoth": "^1.8.0",
+    "marked": "^14.1.2",
+    "pdfjs-dist": "^4.8.69",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "turndown": "^7.2.0",
+    "turndown-plugin-gfm": "^1.0.2",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.3",
+    "electron": "^45.0.0",
+    "electron-builder": "^26.15.3",
+    "sharp": "^0.35.5",
+    "vite": "^5.4.10"
+  },
+  "description": "Convert PDF, Word, PowerPoint, Excel, HTML and more to Markdown - locally.",
+  "author": "SubyiaLab",
+  "license": "MIT",
+  "main": "electron/main.cjs",
+  "build": {
+    "appId": "com.subyialab.markitdown",
+    "productName": "MarkItDown",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**",
+      "electron/**",
+      "public/icon.png",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "public/icon-512.png",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false
+    },
+    "electronDist": "node_modules/electron/dist"
+  }
+}
